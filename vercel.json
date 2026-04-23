@@ -2,7 +2,9 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/pt", "destination": "/atlantyx-onepage-pt.pdf" },
-    { "source": "/en", "destination": "/atlantyx-onepage-en.pdf" }
+    { "source": "/en", "destination": "/atlantyx-onepage-en.pdf" },
+    { "source": "/deck-pt", "destination": "/atlantyx-deck-pt.pdf" },
+    { "source": "/deck-en", "destination": "/atlantyx-deck-en.pdf" }
   ],
   "redirects": [
     {
@@ -28,7 +30,7 @@
   ],
   "headers": [
     {
-      "source": "/atlantyx-onepage-(.*)",
+      "source": "/atlantyx-(onepage|deck)-(.*)",
       "headers": [
         { "key": "Content-Disposition", "value": "inline" },
         { "key": "Cache-Control", "value": "public, max-age=3600" }

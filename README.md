@@ -9,8 +9,10 @@ Depois do deploy, você terá estas URLs:
 | URL | O que faz |
 |-----|-----------|
 | `/` | Painel de controle (seu "app" no celular) |
-| `/pt` | Abre o one-pager em Português (PDF) |
-| `/en` | Abre o one-pager em English (PDF) |
+| `/pt` | Abre o one-pager em Português (PDF 1 página) |
+| `/en` | Abre o one-pager em English (PDF 1 page) |
+| `/deck-pt` | Abre a apresentação completa em Português (13 slides) |
+| `/deck-en` | Abre a apresentação completa em English (13 slides) |
 | `/meet` | Redireciona para seu Calendly |
 | `/linkedin` | Redireciona para seu LinkedIn |
 | `/site` | Redireciona para atlantyx.io |
@@ -93,10 +95,12 @@ Se você tem o domínio **atlantyx.io**, pode apontar um subdomínio:
 
 ## Atualizar os PDFs depois
 
-Você fez v2 da one-page? Só substitui os arquivos em `/public/` e redeploya:
+Você fez v2 da one-page ou traduziu o deck pra inglês? Só substitui os arquivos em `/public/` e redeploya:
 
 - `public/atlantyx-onepage-pt.pdf` ← versão em PT
 - `public/atlantyx-onepage-en.pdf` ← versão em EN
+- `public/atlantyx-deck-pt.pdf` ← apresentação completa em PT
+- `public/atlantyx-deck-en.pdf` ← apresentação completa em EN (atualmente é cópia do PT, substitua quando traduzir)
 
 Commit no GitHub (se usou opção 2) e Vercel redeploya em 30 segundos. **URL não muda** — os QR codes e links já distribuídos continuam funcionando.
 
@@ -108,8 +112,10 @@ Commit no GitHub (se usou opção 2) e Vercel redeploya em 30 segundos. **URL n�
 atlantyx-vercel-deploy/
 ├── public/
 │   ├── index.html                     # painel de controle
-│   ├── atlantyx-onepage-pt.pdf        # one-page PT
-│   ├── atlantyx-onepage-en.pdf        # one-page EN
+│   ├── atlantyx-onepage-pt.pdf        # one-page PT (1 página, ~90KB)
+│   ├── atlantyx-onepage-en.pdf        # one-page EN (1 página, ~90KB)
+│   ├── atlantyx-deck-pt.pdf           # apresentação completa PT (13 slides, ~3MB)
+│   ├── atlantyx-deck-en.pdf           # apresentação completa EN (13 slides, ~3MB)
 │   ├── og-image.png                   # preview WhatsApp (1200x630)
 │   ├── apple-icon.png                 # ícone iOS
 │   ├── favicon.png                    # ícone browser
