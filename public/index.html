@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Atlantyx Sender — Fábio</title>
+<meta name="description" content="Atlantyx — AI-Powered Business Intelligence. Get the executive one-pager.">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Atlantyx">
+
+<!-- Open Graph / WhatsApp preview -->
+<meta property="og:title" content="Atlantyx — Executive One-Pager">
+<meta property="og:description" content="Data Intelligence & AI · 16+ years · 300+ solutions in production">
+<meta property="og:image" content="/og-image.png">
+<meta property="og:url" content="https://atlantyx-sender.vercel.app">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/png" href="/icon.png">
+<link rel="apple-touch-icon" href="/apple-icon.png">
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+  padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
+  -webkit-font-smoothing: antialiased;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.header {
+  padding: 28px 0 20px;
+  text-align: center;
+  border-bottom: 1px solid #1a1a1a;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.logo-icon {
+  width: 28px;
+  height: 36px;
+  flex-shrink: 0;
+}
+.brand {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+}
+.brand .dot { color: #00C4CC; }
+.tagline {
+  display: block;
+  font-size: 10px;
+  color: #888;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 4px;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #1a1a1a;
+  margin-bottom: 24px;
+}
+.section-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #00C4CC;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 20px 0 10px;
+  padding-left: 4px;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 18px 20px;
+  margin-bottom: 10px;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s;
+  -webkit-user-select: none;
+  user-select: none;
+  font-family: inherit;
+}
+.btn:active { background: #1a1a1a; }
+.btn-primary {
+  background: #00C4CC;
+  color: #000;
+  border-color: #00C4CC;
+}
+.btn-primary:active { background: #00a8b0; }
+.btn-lang {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #000;
+  color: #00C4CC;
+  min-width: 34px;
+  text-align: center;
+}
+.btn-primary .btn-lang {
+  background: #000;
+  color: #00FCA8;
+}
+.btn-content {
+  flex: 1;
+}
+.btn-title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.btn-sub {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: #888;
+  margin-top: 3px;
+  letter-spacing: 0.5px;
+}
+.btn-primary .btn-sub { color: rgba(0,0,0,0.65); }
+.btn-arrow {
+  font-size: 20px;
+  color: #444;
+}
+.btn-primary .btn-arrow { color: #000; }
+.template-card {
+  background: #0d0d0d;
+  border: 1px solid #1f1f1f;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #ccc;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.15s;
+}
+.template-card:active { background: #1a1a1a; }
+.template-card::after {
+  content: 'TOCAR PARA COPIAR';
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: #00C4CC;
+  font-weight: 700;
+}
+.template-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #00C4CC;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.lang-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.lang-btn {
+  flex: 1;
+  padding: 10px;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  color: #888;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-align: center;
+  font-family: inherit;
+}
+.lang-btn.active {
+  background: #00C4CC;
+  color: #000;
+  border-color: #00C4CC;
+}
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #00C4CC;
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: 1000;
+  box-shadow: 0 8px 30px rgba(0,196,204,0.4);
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.footer {
+  text-align: center;
+  font-size: 9px;
+  color: #555;
+  letter-spacing: 3px;
+  padding: 30px 0 20px;
+  border-top: 1px solid #1a1a1a;
+  margin-top: 30px;
+}
+.hidden { display: none !important; }
+.instructions {
+  font-size: 12px;
+  color: #777;
+  line-height: 1.6;
+  padding: 12px 14px;
+  background: #0a0a0a;
+  border-radius: 8px;
+  border-left: 3px solid #00C4CC;
+  margin-bottom: 16px;
+}
+.instructions strong { color: #fff; }
+.url-display {
+  font-size: 10px;
+  color: #555;
+  font-family: 'Consolas', monospace;
+  padding: 8px 12px;
+  background: #0a0a0a;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  word-break: break-all;
+}
+.url-display strong { color: #00C4CC; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <svg class="logo-icon" viewBox="0 0 200 240" fill="none" stroke="white" stroke-width="10" stroke-linejoin="round">
+    <rect x="40" y="15" width="120" height="120" rx="18" transform="rotate(45 100 75)" />
+    <rect x="40" y="105" width="120" height="120" rx="18" transform="rotate(45 100 165)" />
+    <line x1="100" y1="10" x2="100" y2="230" />
+  </svg>
+  <div class="brand">ATLANTYX<span class="dot">.</span></div>
+</div>
+
+<div class="tagline">SENDER KIT · FÁBIO</div>
+
+<!-- =========== SEND ONE-PAGE SECTION =========== -->
+<div class="section-label">Enviar One-Page</div>
+
+<button class="btn btn-primary" onclick="sendWA('PT')">
+  <span class="btn-lang">PT</span>
+  <div class="btn-content">
+    <div class="btn-title">Enviar One-Page Português</div>
+    <span class="btn-sub">Abre WhatsApp com mensagem pronta</span>
+  </div>
+  <span class="btn-arrow">→</span>
+</button>
+
+<button class="btn btn-primary" onclick="sendWA('EN')">
+  <span class="btn-lang">EN</span>
+  <div class="btn-content">
+    <div class="btn-title">Send One-Page English</div>
+    <span class="btn-sub">Opens WhatsApp with pre-written message</span>
+  </div>
+  <span class="btn-arrow">→</span>
+</button>
+
+<div class="instructions">
+  <strong>Fluxo:</strong> toca no botão → abre WhatsApp → escolhe contato ou cola número → envia. A mensagem já vem com o link do PDF embutido.
+</div>
+
+<!-- =========== QUICK OPEN PDFs =========== -->
+<div class="section-label">Abrir / Compartilhar PDF</div>
+
+<a class="btn" href="/pt" target="_blank">
+  <span class="btn-lang">PT</span>
+  <div class="btn-content">
+    <div class="btn-title">Abrir One-Page PT</div>
+    <span class="btn-sub">PDF em nova aba</span>
+  </div>
+  <span class="btn-arrow">↗</span>
+</a>
+
+<a class="btn" href="/en" target="_blank">
+  <span class="btn-lang">EN</span>
+  <div class="btn-content">
+    <div class="btn-title">Open One-Page EN</div>
+    <span class="btn-sub">PDF in new tab</span>
+  </div>
+  <span class="btn-arrow">↗</span>
+</a>
+
+<div class="url-display">
+  Links públicos: <strong id="url-domain">atlantyx-sender.vercel.app</strong><strong>/pt</strong> · <strong>/en</strong>
+</div>
+
+<!-- =========== MESSAGE TEMPLATES =========== -->
+<div class="section-label">Templates de Mensagem</div>
+
+<div class="lang-toggle">
+  <div class="lang-btn active" onclick="switchLang('pt')" id="tab-pt">PORTUGUÊS</div>
+  <div class="lang-btn" onclick="switchLang('en')" id="tab-en">ENGLISH</div>
+</div>
+
+<!-- PT TEMPLATES -->
+<div id="templates-pt">
+  <div class="template-card"
+       data-lang="pt"
+       data-message="Oi [Nome], Fábio aqui da Atlantyx — ótimo falar com você hoje na OTC! Como prometido, envio nosso one-pager executivo. Quando faz sentido uma call de 30 min semana que vem?">
+    <div class="template-label">Após primeiro contato na OTC</div>
+    Oi [Nome], Fábio aqui da Atlantyx — ótimo falar com você hoje na OTC! Como prometido, envio nosso one-pager executivo. Quando faz sentido uma call de 30 min semana que vem?
+  </div>
+
+  <div class="template-card"
+       data-lang="pt"
+       data-message="Olá [Nome], acompanhando nossa conversa no [evento]. Seguem os materiais que mencionei sobre a Atlantyx — 16+ anos, 300+ soluções em produção. Disponível para call?">
+    <div class="template-label">Follow-up mais formal</div>
+    Olá [Nome], acompanhando nossa conversa no [evento]. Seguem os materiais que mencionei sobre a Atlantyx — 16+ anos, 300+ soluções em produção. Disponível para call?
+  </div>
+
+  <div class="template-card"
+       data-lang="pt"
+       data-message="[Nome], conforme conversamos, o diagnóstico executivo de 15 dias é sem custo. O one-pager anexo resume nossa proposta. Posso agendar?">
+    <div class="template-label">Fechamento de próximo passo</div>
+    [Nome], conforme conversamos, o diagnóstico executivo de 15 dias é sem custo. O one-pager anexo resume nossa proposta. Posso agendar?
+  </div>
+</div>
+
+<!-- EN TEMPLATES -->
+<div id="templates-en" class="hidden">
+  <div class="template-card"
+       data-lang="en"
+       data-message="Hi [Name], Fabio from Atlantyx — great meeting you at OTC today! As promised, sharing our executive one-pager. Would any day next week work for a 30-min call?">
+    <div class="template-label">After first meeting at OTC</div>
+    Hi [Name], Fabio from Atlantyx — great meeting you at OTC today! As promised, sharing our executive one-pager. Would any day next week work for a 30-min call?
+  </div>
+
+  <div class="template-card"
+       data-lang="en"
+       data-message="Hi [Name], following up on our conversation at [event]. Attached is the one-pager — 16+ years in data/AI, 300+ solutions in production. Available for a call?">
+    <div class="template-label">More formal follow-up</div>
+    Hi [Name], following up on our conversation at [event]. Attached is the one-pager — 16+ years in data/AI, 300+ solutions in production. Available for a call?
+  </div>
+
+  <div class="template-card"
+       data-lang="en"
+       data-message="[Name], as discussed, the 15-day diagnostic comes at no cost. The attached one-pager summarizes our offer. Shall I schedule?">
+    <div class="template-label">Close on next step</div>
+    [Name], as discussed, the 15-day diagnostic comes at no cost. The attached one-pager summarizes our offer. Shall I schedule?
+  </div>
+</div>
+
+<!-- =========== CONTACTS & LINKS =========== -->
+<div class="section-label">Links Úteis</div>
+
+<a class="btn" href="/meet" target="_blank">
+  <div class="btn-content">
+    <div class="btn-title">📅 Meu Calendly</div>
+    <span class="btn-sub">atlantyx-sender.vercel.app/meet</span>
+  </div>
+  <span class="btn-arrow">↗</span>
+</a>
+
+<a class="btn" href="https://linkedin.com/in/fabioquintanilha" target="_blank">
+  <div class="btn-content">
+    <div class="btn-title">💼 Meu LinkedIn</div>
+  </div>
+  <span class="btn-arrow">↗</span>
+</a>
+
+<a class="btn" href="https://atlantyx.io" target="_blank">
+  <div class="btn-content">
+    <div class="btn-title">🌐 atlantyx.io</div>
+  </div>
+  <span class="btn-arrow">↗</span>
+</a>
+
+<a class="btn" href="mailto:contato@atlantyx.io">
+  <div class="btn-content">
+    <div class="btn-title">✉️ contato@atlantyx.io</div>
+  </div>
+  <span class="btn-arrow">→</span>
+</a>
+
+<a class="btn" href="tel:+5521960153911">
+  <div class="btn-content">
+    <div class="btn-title">📞 +55 21 96015-3911</div>
+  </div>
+  <span class="btn-arrow">→</span>
+</a>
+
+<div class="footer">
+  AI-POWERED · DISRUPTIVE · BUSINESS INTELLIGENCE
+</div>
+
+<div class="toast" id="toast">COPIADO ✓</div>
+
+<script>
+  // Detect current origin (works on Vercel + any custom domain)
+  const ORIGIN = window.location.origin;
+  document.getElementById('url-domain').textContent = window.location.host;
+
+  const CALENDLY = "https://meetings.hubspot.com/atlantyx?uuid=eca883eb-276d-45cb-bda8-d7d5d2ae9219";
+
+  const MSG_PT = `Oi! Fábio aqui da Atlantyx — ótimo falar com você. Como prometido, envio nosso one-pager executivo:
+
+${ORIGIN}/pt
+
+16+ anos em dados & IA, 300+ soluções em produção. Disponível para uma call de 30 min?
+
+Agende direto: ${CALENDLY}`;
+
+  const MSG_EN = `Hi! Fabio here from Atlantyx — great meeting you. As promised, sharing our executive one-pager:
+
+${ORIGIN}/en
+
+16+ years in Data & AI, 300+ solutions in production. Available for a 30-min call?
+
+Book directly: ${CALENDLY}`;
+
+  function sendWA(lang) {
+    const msg = lang === 'PT' ? MSG_PT : MSG_EN;
+    const url = "https://wa.me/?text=" + encodeURIComponent(msg);
+    window.location.href = url;
+  }
+
+  function copyText(card, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast('COPIADO ✓');
+      card.style.borderColor = '#00C4CC';
+      setTimeout(() => { card.style.borderColor = '#1f1f1f'; }, 1500);
+    }).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast('COPIADO ✓');
+    });
+  }
+
+  // Attach click handlers to all template cards
+  document.querySelectorAll('.template-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const msg = card.dataset.message;
+      const lang = card.dataset.lang;
+      const pdfUrl = `${ORIGIN}/${lang}`;
+      const suffix = lang === 'pt'
+        ? `\n\nOne-pager: ${pdfUrl}\nAgende 30min: ${CALENDLY}`
+        : `\n\nOne-pager: ${pdfUrl}\nBook 30min: ${CALENDLY}`;
+      copyText(card, msg + suffix);
+    });
+  });
+
+  function switchLang(lang) {
+    document.getElementById('templates-pt').classList.toggle('hidden', lang !== 'pt');
+    document.getElementById('templates-en').classList.toggle('hidden', lang !== 'en');
+    document.getElementById('tab-pt').classList.toggle('active', lang === 'pt');
+    document.getElementById('tab-en').classList.toggle('active', lang === 'en');
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 1800);
+  }
+</script>
+
+</body>
+</html>
