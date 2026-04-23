@@ -104,6 +104,31 @@ body {
   border-color: #00C4CC;
 }
 .btn-primary:active { background: #00a8b0; }
+.btn-deck {
+  background: #0a0a0a;
+  color: #fff;
+  border: 1px solid #00FCA8;
+  position: relative;
+}
+.btn-deck:active { background: #111; }
+.btn-deck::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #00FCA8;
+  border-radius: 14px 0 0 14px;
+}
+.btn-deck .btn-lang {
+  background: #00FCA8;
+  color: #000;
+}
+.btn-deck .btn-sub {
+  color: #00FCA8;
+}
+.btn-deck .btn-arrow { color: #00FCA8; }
 .btn-lang {
   font-size: 11px;
   font-weight: 700;
@@ -268,13 +293,13 @@ body {
 <div class="tagline">SENDER KIT · FÁBIO</div>
 
 <!-- =========== SEND ONE-PAGE SECTION =========== -->
-<div class="section-label">Enviar One-Page</div>
+<div class="section-label">Enviar One-Page · Quick hit</div>
 
 <button class="btn btn-primary" onclick="sendWA('PT')">
   <span class="btn-lang">PT</span>
   <div class="btn-content">
     <div class="btn-title">Enviar One-Page Português</div>
-    <span class="btn-sub">Abre WhatsApp com mensagem pronta</span>
+    <span class="btn-sub">1 página · quem só quer espiar</span>
   </div>
   <span class="btn-arrow">→</span>
 </button>
@@ -283,13 +308,34 @@ body {
   <span class="btn-lang">EN</span>
   <div class="btn-content">
     <div class="btn-title">Send One-Page English</div>
-    <span class="btn-sub">Opens WhatsApp with pre-written message</span>
+    <span class="btn-sub">1 page · for the curious prospect</span>
+  </div>
+  <span class="btn-arrow">→</span>
+</button>
+
+<!-- =========== SEND FULL DECK SECTION =========== -->
+<div class="section-label">Enviar Apresentação Completa · Deep dive</div>
+
+<button class="btn btn-deck" onclick="sendDeck('PT')">
+  <span class="btn-lang">PT</span>
+  <div class="btn-content">
+    <div class="btn-title">Enviar Apresentação Completa</div>
+    <span class="btn-sub">13 slides · pitch C-level completo</span>
+  </div>
+  <span class="btn-arrow">→</span>
+</button>
+
+<button class="btn btn-deck" onclick="sendDeck('EN')">
+  <span class="btn-lang">EN</span>
+  <div class="btn-content">
+    <div class="btn-title">Send Full Deck</div>
+    <span class="btn-sub">13 slides · complete C-level pitch</span>
   </div>
   <span class="btn-arrow">→</span>
 </button>
 
 <div class="instructions">
-  <strong>Fluxo:</strong> toca no botão → abre WhatsApp → escolhe contato ou cola número → envia. A mensagem já vem com o link do PDF embutido.
+  <strong>Quando usar qual:</strong> One-page para o primeiro contato e cold outreach. Apresentação Completa quando o prospect pedir "mais detalhes" ou depois de uma reunião produtiva em que você quer deixar material sólido.
 </div>
 
 <!-- =========== QUICK OPEN PDFs =========== -->
@@ -299,7 +345,7 @@ body {
   <span class="btn-lang">PT</span>
   <div class="btn-content">
     <div class="btn-title">Abrir One-Page PT</div>
-    <span class="btn-sub">PDF em nova aba</span>
+    <span class="btn-sub">1 página · PDF</span>
   </div>
   <span class="btn-arrow">↗</span>
 </a>
@@ -308,13 +354,31 @@ body {
   <span class="btn-lang">EN</span>
   <div class="btn-content">
     <div class="btn-title">Open One-Page EN</div>
-    <span class="btn-sub">PDF in new tab</span>
+    <span class="btn-sub">1 page · PDF</span>
+  </div>
+  <span class="btn-arrow">↗</span>
+</a>
+
+<a class="btn" href="/deck-pt" target="_blank">
+  <span class="btn-lang">PT</span>
+  <div class="btn-content">
+    <div class="btn-title">Abrir Apresentação Completa PT</div>
+    <span class="btn-sub">13 slides · PDF</span>
+  </div>
+  <span class="btn-arrow">↗</span>
+</a>
+
+<a class="btn" href="/deck-en" target="_blank">
+  <span class="btn-lang">EN</span>
+  <div class="btn-content">
+    <div class="btn-title">Open Full Deck EN</div>
+    <span class="btn-sub">13 slides · PDF</span>
   </div>
   <span class="btn-arrow">↗</span>
 </a>
 
 <div class="url-display">
-  Links públicos: <strong id="url-domain">atlantyx-sender.vercel.app</strong><strong>/pt</strong> · <strong>/en</strong>
+  Links: <strong>/pt</strong> · <strong>/en</strong> · <strong>/deck-pt</strong> · <strong>/deck-en</strong>
 </div>
 
 <!-- =========== MESSAGE TEMPLATES =========== -->
@@ -421,7 +485,6 @@ body {
 <script>
   // Detect current origin (works on Vercel + any custom domain)
   const ORIGIN = window.location.origin;
-  document.getElementById('url-domain').textContent = window.location.host;
 
   const CALENDLY = "https://meetings.hubspot.com/atlantyx?uuid=eca883eb-276d-45cb-bda8-d7d5d2ae9219";
 
@@ -441,8 +504,30 @@ ${ORIGIN}/en
 
 Book directly: ${CALENDLY}`;
 
+  const MSG_DECK_PT = `Oi! Fábio aqui da Atlantyx. Conforme combinamos, segue nossa apresentação executiva completa:
+
+${ORIGIN}/deck-pt
+
+13 slides cobrindo proposta de valor, modelo de engajamento, produtos proprietários e retorno financeiro esperado. Qualquer dúvida no material, posso esclarecer em 30 min:
+
+${CALENDLY}`;
+
+  const MSG_DECK_EN = `Hi! Fabio from Atlantyx. As we discussed, here's our full executive presentation:
+
+${ORIGIN}/deck-en
+
+13 slides covering value proposition, engagement model, proprietary products and expected financial return. Happy to walk you through it in a 30-min call:
+
+${CALENDLY}`;
+
   function sendWA(lang) {
     const msg = lang === 'PT' ? MSG_PT : MSG_EN;
+    const url = "https://wa.me/?text=" + encodeURIComponent(msg);
+    window.location.href = url;
+  }
+
+  function sendDeck(lang) {
+    const msg = lang === 'PT' ? MSG_DECK_PT : MSG_DECK_EN;
     const url = "https://wa.me/?text=" + encodeURIComponent(msg);
     window.location.href = url;
   }
