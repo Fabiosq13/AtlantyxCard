@@ -1,0 +1,38 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/pt", "destination": "/atlantyx-onepage-pt.pdf" },
+    { "source": "/en", "destination": "/atlantyx-onepage-en.pdf" }
+  ],
+  "redirects": [
+    {
+      "source": "/meet",
+      "destination": "https://meetings.hubspot.com/atlantyx?uuid=eca883eb-276d-45cb-bda8-d7d5d2ae9219",
+      "permanent": false
+    },
+    {
+      "source": "/call",
+      "destination": "https://meetings.hubspot.com/atlantyx?uuid=eca883eb-276d-45cb-bda8-d7d5d2ae9219",
+      "permanent": false
+    },
+    {
+      "source": "/linkedin",
+      "destination": "https://linkedin.com/in/fabioquintanilha",
+      "permanent": false
+    },
+    {
+      "source": "/site",
+      "destination": "https://atlantyx.io",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/atlantyx-onepage-(.*)",
+      "headers": [
+        { "key": "Content-Disposition", "value": "inline" },
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    }
+  ]
+}
